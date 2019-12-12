@@ -34,7 +34,7 @@ module.exports = {
         fieldName: "fauna",
         url: "https://graphql.fauna.com/graphql",
         headers: {
-          Authorization: "Bearer fnADfbqhF0ACAK4dzSilXKHeyagF9b_lNFm24qwM",
+          Authorization: "Bearer < Server key >",
         },
       },
     },
