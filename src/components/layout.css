@@ -111,7 +111,13 @@ optgroup,
 select,
 textarea {
   font: inherit;
-  margin: 0;
+  margin: 10px;
+  border-radius: 25px;
+  border: 0px solid black;
+  background-color: rgba(55, 70, 199, 0.9);
+  color: white;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
 }
 optgroup {
   font-weight: 700;

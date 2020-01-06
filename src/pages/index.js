@@ -45,26 +45,24 @@ const IndexPage = props => {
   return (
     <Layout>
       <ul>
-        {props.data.fauna.allProducts.data.map(product => (
-          <li>
-            <button
-              onClick={() => setProductId(product._id)}
-              disabled={loading}
-            >
-              Get Reviews
-            </button>
+        {props.data.fauna.allProducts.data.map((product, index) => (
+          <li key={'product-' + index}>
+            <span> Product: </span>
             {product.title} - {product.description}
             {productId === product._id && data && (
               <ul>
                 {data.findProductByID.reviews.data.map(
                   ({ _id, text, username }) => (
-                    <li key={_id}>
+                    <li key={'review-' + _id}>
                       {username}: "{text}"
                     </li>
                   )
                 )}
               </ul>
             )}
+            <button key={'product-button-' + index} onClick={() => setProductId(product._id)} disabled={loading}>
+              Get Reviews
+            </button>
           </li>
         ))}
       </ul>
