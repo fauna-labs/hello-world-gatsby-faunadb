@@ -1,6 +1,6 @@
 # Hello World Gatsby FaunaDb
 
-This is an example [GatsbyJS application](https://www.gatsbyjs.org/) that demonstrates pre-loading of data at build-time and on-demand loading of data on the client. It uses [FaunaDB as database](https://fauna.com/). This code is accompagnied by a blog post which might be easier to follow than the readme.
+This is an example [GatsbyJS application](https://www.gatsbyjs.org/) that demonstrates pre-loading of data at build-time and on-demand loading of data on the client. It uses [FaunaDB as database](https://fauna.com/). This code is accompagnied by a blog post will be easier to follow than the readme.
 
 ## Prerequisites
 
@@ -47,7 +47,7 @@ type Query {
 
 Create a FaunaDB server key for the database you have just created. still in the UI at https://dashboard.fauna.com, go to the Security tab on the left and click the 'New Key' button. Select the 'Role' to be Server, give it a name and save it, you will receive a secret. 
 
-Copy paste the secret in the the `plugins` section in the `gatsby-config.js` file. You need to replace the `<SERVER_KEY>` placeholder.
+Copy paste the secret in the the `plugins` section in the `gatsby-config.js` file. You need to replace the `<SERVER_KEY>` placeholder. This key will be used to get data when pregenerating pages. 
 
 ### 5. Add an FaunaDB client key to the `gatsby-browser.js` file
 
@@ -61,20 +61,58 @@ Instead we have to create a key with a new role which grants access to the speci
 5. Click **Save**
 6. Go back to Security on https://dashboard.fauna.com/
 7. Click **New Key**
-8. Select your database and the **ClientRead** role
+8. Select your database and the newly created role
 9. Click **Save**
 
-We need to replace the `<CLIENT KEY>` placeholder in the `gatsby-browser.js` file with the **ClientRead** key we just created.
+Again you will receive a key, copy it since we need to place it in the `<CLIENT KEY>` placeholder in the `gatsby-browser.js` file. This key will be used on the frontend side. 
 
 Note: you have probably noticed the Membership tab on this page. Although we are not using it in this tutorial, it is interesting enough to explain it since it's an alternative way to get security tokens. In the Membership tab can specify that entities of a collection (let's say we have a 'Users' collection) in FaunaDb are members of a particular role. That means that if you impersonate one of these entities in that collection, the role privileges apply. You impersonate a database entity (e.g. a User) by associating credentials with the entity and using the Login function, which will return a token. That way you can also implement password-based authentication in FaunaDb. We won't use it in this tutorial, but if that interests you, check the FaunaDB authentication tutorial: https://app.fauna.com/tutorials/authentication
 
-### 6. Start the GatsbyJS development server
+### 6. Add some data 
+Still on the https://dashboard.fauna.com/ UI, you can add data by going to the Collections tab on the left. 
+Our Products looke like: 
+{ 
+  "title": "<some title>", 
+  "description": "<some description>" 
+}
+And Reviews look like: 
+{
+  "username": "<some username>",
+  "text": "<some text>",
+  "product": Ref(Collection("Product"), "<some id>")
+}
+Feel free to create some or paste the following scripts into the Shell (left on the menu in the UI) to create some dummy data. 
+
+Map(
+  [
+    { title: "Screwdriver", description: "Drives screws." },
+    { title: "Hair dryer", description: "Dries your hair." },
+    { title: "Rocket", description: "Flies you to the moon and back." }
+  ],
+  Lambda("product",
+    Create(Collection("Product"), { data: Var("product") })
+  )
+);
+
+Map(
+  Paginate(Match(Index("allProducts"))),
+  Lambda("ref", Create(Collection("Review"), {
+    data: {
+      username: "Tina",
+      text: "Good product!",
+      product: Var("ref")
+    }
+  }))
+)
+
+
+### 7. Start the GatsbyJS development server
 
 To start a development server we need to run the following command:
 
     npm run develop
     
-### 7. Look at the new website
+### 8. Look at the new website
 
 To see the website, we have to open http://localhost:8000 in a browser.
 
