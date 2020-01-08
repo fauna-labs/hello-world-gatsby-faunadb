@@ -1,0 +1,101 @@
+.product-title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.product-title-container h2 {
+  font-weight: 300;
+  margin: 0;
+}
+
+.explanation {
+  color: rgba(0,0,100,0.3);
+  font-size: 12px;
+}
+
+.product-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.product-card-container .product-card-list {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.product-card-container .product-card-list .product-list-item {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.product-card {
+  display: flex;
+  padding: 20px;
+  width: 100%;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+  background: rgba(0,0,0,0.07);
+}
+
+.product-card button {
+  margin: 0;
+  background: rgba(0,170,0,0.6);
+  color: rgba(255,255,255,0.8);
+  font-size: 15px;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  outline:none;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.product-card button:hover {
+  margin: 0;
+  border: 1px solid rgba(0,0,0,0.5);
+
+}
+
+.product-card .product-name {
+  flex: 1 0 0;
+  font-weight: 900;
+}
+
+.product-card .product-description {
+  flex: 9 0 0;
+}
+
+.product-reviews {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.product-reviews .review {
+  display: flex;
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.product-reviews .review .review-user {
+  display: flex;
+  padding: 10px;
+  font-weight: 900;
+  width: 100px;
+}
+
+.product-reviews .review .review-text {
+  display: flex;
+  padding: 10px;
+}

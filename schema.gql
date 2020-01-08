@@ -1,0 +1,15 @@
+type Product {
+  title: String!
+  description: String
+  reviews: [Review] @relation
+}
+
+type Review {
+  username: String!
+  text: String!
+  product: Product!
+}
+
+type Query {
+  allProducts: [Product]
+}

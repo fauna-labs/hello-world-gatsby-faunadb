@@ -1,0 +1,17 @@
+header {
+  background: linear-gradient(to right, #606c88, #3f4c6b);
+  color: white;
+  font-family: 'Roboto';
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.title-container .title {
+  margin: 0;
+  font-weight: 100;
+}

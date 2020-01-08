@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Hello World Gatsby and FaunaDB`,
+    title: `Products & Reviews`,
     description: `A getting started guide with Gatsby and FaunaDb tutorial`
   },
   plugins: [
@@ -33,7 +33,7 @@ module.exports = {
         fieldName: "fauna",
         url: "https://graphql.fauna.com/graphql",
         headers: {
-          Authorization: "Bearer < Server key >",
+          Authorization: "Bearer fnADhmI8CSACAoGjLF7jrtZIw9ebmVGc_itqCmRN",
         },
       },
     },
