@@ -45,13 +45,9 @@ type Query {
     
 ### 4. Add an FaunaDB server key to the `gatsby-config.js` file
 
-An admin key for a FaunaDB database named `hello-world-gatsby-faunadb`, which can be created with the following command:
+Create a FaunaDB server key for the database you have just created. still in the UI at https://dashboard.fauna.com, go to the Security tab on the left and click the 'New Key' button. Select the 'Role' to be Server, give it a name and save it, you will receive a secret. 
 
-    npx fauna-shell create-key hello-world-gatsby-faunadb server
-    
-Under the `plugins` section in the `gatsby-config.js` file is the config for the `gatsby-source-graphql` plugin.
-
-We need to replace the `<SERVER_KEY>` placeholder with an actual FaunaDB admin key.
+Copy paste the secret in the the `plugins` section in the `gatsby-config.js` file. You need to replace the `<SERVER_KEY>` placeholder.
 
 ### 5. Add an FaunaDB client key to the `gatsby-browser.js` file
 
