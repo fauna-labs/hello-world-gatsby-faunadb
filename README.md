@@ -70,19 +70,23 @@ Note: you have probably noticed the Membership tab on this page. Although we are
 
 ### 6. Add some data 
 Still on the https://dashboard.fauna.com/ UI, you can add data by going to the Collections tab on the left. 
-Our Products looke like: 
+Our Products looke like:
+``` 
 { 
   "title": "<some title>", 
   "description": "<some description>" 
 }
+``` 
 And Reviews look like: 
+```    
 {
   "username": "<some username>",
   "text": "<some text>",
   "product": Ref(Collection("Product"), "<some id>")
 }
-Feel free to create some or paste the following scripts into the Shell (left on the menu in the UI) to create some dummy data. 
-
+```
+Feel free to create some or paste the following two scripts into the Shell (left on the menu in the UI) to create some dummy data. 
+```
 Map(
   [
     { title: "Screwdriver", description: "Drives screws." },
@@ -93,7 +97,9 @@ Map(
     Create(Collection("Product"), { data: Var("product") })
   )
 );
-
+```
+and 
+```
 Map(
   Paginate(Match(Index("allProducts"))),
   Lambda("ref", Create(Collection("Review"), {
@@ -104,6 +110,7 @@ Map(
     }
   }))
 )
+```
 
 
 ### 7. Start the GatsbyJS development server
