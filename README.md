@@ -22,7 +22,7 @@ This is an example [GatsbyJS application](https://www.gatsbyjs.org/) that demons
 
 ### 3. Add the GraphQL schema to the database to automatically create collections an indices 
 
-1. Still in https://dashboard.fauna.com/, go to the GraphQL tab
+1. Still in https://dashboard.fauna.com/, go to the GraphQL tab on the left
 2. Save the following GraphQL schema to a file and upload it with the 'Import Schema' button: 
 ```
 type Product {
