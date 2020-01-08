@@ -55,15 +55,14 @@ Server keys or Admin keys are not meant to be passed to the frontend.
 Instead we have to create a key with a new role which grants access to the specifically database entities that should be accessed.
 
 1. Go to Security and then click on Roles in the newly created database in the UI of https://dashboard.fauna.com/
-2. Click on **New Role**
-3. Name the new role **ClientRead**
-4. Add the **Product** and **Review** collections, and the **product_reviews_by_product** and **AllProducts** indexes
-5. Check for all added collections and indexes the **read** permission
-6. Click **Save**
-1. Go back to Security on https://dashboard.fauna.com/
-8. Click **New Key**
-9. Select your database and the **ClientRead** role
-10. Click **Save**
+2. Click on **New Role** and give it a name.
+3. Add the **Product** and **Review** collections, and the **product_reviews_by_product** and **AllProducts** indexes. These are already there because FaunaDB created them when you imported the GraphQL schema. 
+4. Check for all added collections and indexes the **read** permission
+5. Click **Save**
+6. Go back to Security on https://dashboard.fauna.com/
+7. Click **New Key**
+8. Select your database and the **ClientRead** role
+9. Click **Save**
 
 We need to replace the `<CLIENT KEY>` placeholder in the `gatsby-browser.js` file with the **ClientRead** key we just created.
 
