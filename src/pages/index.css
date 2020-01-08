@@ -70,7 +70,7 @@
 }
 
 .product-card .product-description {
-  flex: 9 0 0;
+  flex: 4 0 0;
 }
 
 .product-reviews {
@@ -92,7 +92,7 @@
   display: flex;
   padding: 10px;
   font-weight: 900;
-  width: 100px;
+  width: 200px;
 }
 
 .product-reviews .review .review-text {
